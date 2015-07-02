@@ -1,0 +1,103 @@
+﻿<Window x:Class="DesktopApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:DesktopApp.View"
+        Title="MainWindow" Height="700" Width="958.925" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" Background="#FF3E606F" Icon="jgsaw-solver.ico">
+    <Canvas Height="700" VerticalAlignment="Top" Background="#FFACC2C4">
+        <Grid x:Name="CellGrid" Height="540" Canvas.Top="99" Width="540" Canvas.Left="359">
+            <Grid.Effect>
+                <DropShadowEffect ShadowDepth="0" BlurRadius="2" Opacity="0.8" Direction="0"/>
+            </Grid.Effect>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+        </Grid>
+        <Canvas Height="700" Width="300" Background="#FF3E606F">
+            <Canvas.Effect>
+                <DropShadowEffect BlurRadius="2" Color="#FF48879E" Direction="0" Opacity="0.5" ShadowDepth="1"/>
+            </Canvas.Effect>
+            <Canvas x:Name="titleBar" Height="40" Width="657" Background="#FF8DA1A2" Canvas.Left="301">
+                <Image Height="20" Canvas.Left="10" Canvas.Top="11" Width="20" Source="pack://application:,,,/Resources/user_icon.png"/>
+                <Label x:Name="lblUsername" Content="Peter Bartha" Canvas.Left="31" Canvas.Top="5" FontSize="16" Foreground="#FF253D47" Cursor="Hand"/>
+                <Image x:Name="exitIcon" Height="12" Canvas.Left="632" Canvas.Top="15" Width="12" Source="pack://siteoforigin:,,,/Resources/quit.png" Cursor="Hand"/>
+                <Image x:Name="minimalIcon" Height="12" Canvas.Left="611" Canvas.Top="15" Width="12" Source="pack://siteoforigin:,,,/Resources/minimal.png" Cursor="Hand"/>
+            </Canvas>
+            <Canvas x:Name="logoPanel" Height="80" Width="300" Background="#FF253D47">
+                <Image x:Name="logoImg" Height="50" Canvas.Left="15" Canvas.Top="15" Width="50" Source="pack://application:,,,/Resources/header_logo.png"/>
+                <Label Content="Jigsaw Sudoku" Canvas.Left="78" Canvas.Top="32" Width="135" Foreground="#FFE3EFB9" FontSize="18" FontFamily="Segoe UI Semibold"/>
+                <Label Content="Solver" Canvas.Left="202" Canvas.Top="32" Width="81" Foreground="#FFB3D7E9" FontSize="18" FontFamily="Segoe UI Light"/>
+            </Canvas>
+            <CheckBox x:Name="ChkBasicStep" Content="Naked Single" Canvas.Left="45" Canvas.Top="306" Height="25" Width="175" FontSize="16" VerticalContentAlignment="Center" Padding="8,-1,0,0" Background="#FFC1E0FF" BorderBrush="#FFB3D7E9" Foreground="#FFB3D7E9" IsEnabled="False" IsChecked="True"/>
+            <CheckBox x:Name="ChkNakedSingle" Content="Hidden Single" Canvas.Left="45" Canvas.Top="336" Height="25" Width="175" FontSize="16" VerticalContentAlignment="Center" Padding="8,-1,0,0" Background="#FFC1E0FF" BorderBrush="#FFB3D7E9" Foreground="#FFB3D7E9" IsEnabled="False" IsChecked="True"/>
+            <CheckBox x:Name="ChkNakedPair" Content="Naked pair" Canvas.Left="45" Canvas.Top="366" Height="25" Width="175" FontSize="16" VerticalContentAlignment="Center" Padding="8,-1,0,0" Background="#FFC1E0FF" BorderBrush="#FFB3D7E9" Foreground="#FFB3D7E9" IsChecked="True" Click="ChkNakedPair_Checked"/>
+            <CheckBox x:Name="ChkHiddenPair" Content="Hidden pair" Canvas.Left="45" Canvas.Top="396" Height="25" Width="175" FontSize="16" VerticalContentAlignment="Center" Padding="8,-1,0,0" Background="#FFC1E0FF" BorderBrush="#FFB3D7E9" Foreground="#FFB3D7E9" IsChecked="True" Click="ChkHiddenPair_Checked"/>
+            <CheckBox x:Name="ChkPointingPair" Content="Pointing pair" Canvas.Left="45" Canvas.Top="426" Height="25" Width="175" FontSize="16" VerticalContentAlignment="Center" Padding="8,-1,0,0" Background="#FFC1E0FF" BorderBrush="#FFB3D7E9" Foreground="#FFB3D7E9" IsChecked="True" Click="ChkPointingPair_Checked"/>
+            <CheckBox x:Name="ChkBoxLineReduuction" Content="Box line reduction" Canvas.Left="45" Canvas.Top="456" Height="25" Width="175" FontSize="16" VerticalContentAlignment="Center" Padding="8,-1,0,0" Background="#FFC1E0FF" BorderBrush="#FFB3D7E9" Foreground="#FFB3D7E9" IsChecked="True" Click="ChkBoxLineReduuction_Checked"/>
+            <CheckBox x:Name="ChkXWing" Content="X-Wing" Canvas.Left="45" Canvas.Top="486" Height="25" Width="175" FontSize="16" VerticalContentAlignment="Center" Padding="8,-1,0,0" Background="#FFC1E0FF" BorderBrush="#FFB3D7E9" Foreground="#FFB3D7E9" IsChecked="True" Click="ChkXWing_Checked"/>
+            <CheckBox x:Name="ChkRandomPick" Content="Random Pick" Canvas.Left="45" Canvas.Top="516" Height="25" Width="175" FontSize="16" VerticalContentAlignment="Center" Padding="8,-1,0,0" Background="#FFC1E0FF" BorderBrush="#FFB3D7E9" Foreground="#FFB3D7E9" IsChecked="True" Click="ChkRandomPick_Checked"/>
+            <Label Content="Game strategies" Canvas.Left="25" Canvas.Top="262" Width="204" FontSize="20" Padding="0,5,5,5" Foreground="#FF1D333C" FontFamily="Segoe UI Semibold"/>
+            <CheckBox x:Name="ChkShowCandidates" Content="Show candidates" Canvas.Left="45" Canvas.Top="588" Height="25" Width="175" FontSize="16" VerticalContentAlignment="Center" Padding="8,-1,0,0" Background="#FFC1E0FF" BorderBrush="#FFB3D7E9" Foreground="#FFB3D7E9" Click="CheckBox_ShowCandidates"/>
+            <Label Content="Other options" Canvas.Left="25" Canvas.Top="546" Width="204" FontSize="20" Padding="0,5,5,5" Foreground="#FF1D333C" FontFamily="Segoe UI Semibold"/>
+            <CheckBox x:Name="ChkStopWatch" Content="Stopwatch" Canvas.Left="45" Canvas.Top="648" Height="25" Width="175" FontSize="16" VerticalContentAlignment="Center" Padding="8,-1,0,0" Background="#FFC1E0FF" BorderBrush="#FFB3D7E9" Foreground="#FFB3D7E9" IsChecked="True" Click="ChkStopWatch_Checked"/>
+            <Button x:Name="btnOpenMap" Content="Open Table" Canvas.Left="25" Canvas.Top="134" Width="110" Height="31" Background="#FFACC2C4" BorderBrush="#FF8DA1A2" Foreground="#FF3E606F" FontSize="14" FontFamily="Segoe UI Semibold" RenderTransformOrigin="0.509,0.516" Click="btnOpenMap_Click"/>
+            <Button Content="Take a step" Canvas.Left="25" Canvas.Top="220" Width="110" Height="31" Background="#FFACC2C4" BorderBrush="#FF8DA1A2" Foreground="#FF3E606F" FontSize="14" FontFamily="Segoe UI Semibold" Click="Button_TakeOneStep"/>
+            <Button x:Name="AutoSolve" Content="Auto solve" Canvas.Left="166" Canvas.Top="220" Width="110" Height="31" Background="#FFACC2C4" BorderBrush="#FF8DA1A2" Foreground="#FF3E606F" FontSize="14" Click="AutoSolve_Click"/>
+            <Ellipse x:Name="StepPointer" Fill="#FFACC2C4" Height="9" Canvas.Left="28" Canvas.Top="314" Width="9"/>
+            <Label Content="Solver" Canvas.Left="25" Canvas.Top="176" Width="204" FontSize="20" Padding="0,5,5,5" Foreground="#FF1D333C" FontFamily="Segoe UI Semibold"/>
+            <Label Content="New Game" Canvas.Left="25" Canvas.Top="92" Width="130" FontSize="20" Padding="0,5,5,5" Foreground="#FF1D333C" FontFamily="Segoe UI Semibold"/>
+            <Label x:Name="lblActualMap" Content="Actual table:" Canvas.Left="440" Canvas.Top="648" Width="257" Foreground="#FF3E606F"/>
+                <CheckBox x:Name="ChkShowBadValues" Content="Show bad values" Canvas.Left="45" Canvas.Top="618" Height="25" Width="175" FontSize="16" VerticalContentAlignment="Center" Padding="8,-1,0,0" Background="#FFC1E0FF" BorderBrush="#FFB3D7E9" Foreground="#FFB3D7E9" Click="ChkShowBadValues_Click"/>
+        </Canvas>
+        <Label Content="1" Canvas.Left="379" Canvas.Top="61" FontSize="16" Foreground="#FF253D47"/>
+        <Label Content="2" Canvas.Left="439" Canvas.Top="61" FontSize="16" Foreground="#FF253D47"/>
+        <Label Content="3" Canvas.Left="499" Canvas.Top="61" FontSize="16" Foreground="#FF253D47"/>
+        <Label Content="4" Canvas.Left="559" Canvas.Top="61" FontSize="16" Foreground="#FF253D47"/>
+        <Label Content="5" Canvas.Left="619" Canvas.Top="61" FontSize="16" Foreground="#FF253D47"/>
+        <Label Content="6" Canvas.Left="679" Canvas.Top="61" FontSize="16" Foreground="#FF253D47"/>
+        <Label Content="7" Canvas.Left="739" Canvas.Top="61" FontSize="16" Foreground="#FF253D47"/>
+        <Label Canvas.Left="799" Canvas.Top="61" FontSize="16" Foreground="#FF253D47"/>
+        <Label Content="8" Canvas.Left="799" Canvas.Top="61" FontSize="16" Foreground="#FF253D47"/>
+        <Label Content="9" Canvas.Left="859" Canvas.Top="61" FontSize="16" Foreground="#FF253D47"/>
+        <Label Content="A" Canvas.Left="327" Canvas.Top="114" FontSize="16" Foreground="#FF253D47"/>
+        <Label Content="B" Canvas.Left="327" Canvas.Top="174" FontSize="16" Foreground="#FF253D47"/>
+        <Label Content="C" Canvas.Left="327" Canvas.Top="234" FontSize="16" Foreground="#FF253D47"/>
+        <Label Content="D" Canvas.Left="327" Canvas.Top="294" FontSize="16" Foreground="#FF253D47"/>
+        <Label Content="E" Canvas.Left="327" Canvas.Top="354" FontSize="16" Foreground="#FF253D47"/>
+        <Label Content="F" Canvas.Left="327" Canvas.Top="414" FontSize="16" Foreground="#FF253D47"/>
+        <Label Content="G" Canvas.Left="327" Canvas.Top="474" FontSize="16" Foreground="#FF253D47"/>
+        <Label Content="H" Canvas.Left="327" Canvas.Top="534" FontSize="16" Foreground="#FF253D47"/>
+        <Label Content="I" Canvas.Left="327" Canvas.Top="594" FontSize="16" Foreground="#FF253D47"/>
+        <Label x:Name="lblSteps" Content="Steps: 0" Canvas.Left="359" Canvas.Top="648" Foreground="#FF626F70"/>
+        <Label x:Name="lblTimer" Content="00 : 00 : 00" Canvas.Left="756" Canvas.Top="648" Foreground="#FF626F70" Width="143" HorizontalContentAlignment="Right"/>
+        <Canvas x:Name="TheEnd" Height="659" Canvas.Left="300" Canvas.Top="41" Width="659" Background="#B2000000">
+            <Canvas x:Name="tePanel" Height="224" Width="331" Background="#FF3E606F" Canvas.Left="164" Canvas.Top="228">
+                <Label x:Name="teTitle" Content="Title" Canvas.Left="24" Canvas.Top="16" Width="283" FontSize="20" Padding="0,5,5,5" Foreground="#FF1D333C" FontFamily="Segoe UI Semibold"/>
+                <TextBlock x:Name="lblDesc" Canvas.Left="24" TextWrapping="Wrap" Canvas.Top="65" Height="88" Width="283" Foreground="#FFACC2C4"><Run Language="hu-hu" Text="Steps: "/><LineBreak/><Run Language="hu-hu" Text="Canidates showed: "/><LineBreak/><Run Language="hu-hu" Text="Time: "/><LineBreak/><Run Language="hu-hu" Text="Points: "/><LineBreak/><Run Language="hu-hu" Text="Solver used: "/></TextBlock>
+                <Button x:Name="hideTheEnd" Content="Ok" Canvas.Left="110" Canvas.Top="164" Width="110" Height="31" Background="#FFACC2C4" BorderBrush="#FF8DA1A2" Foreground="#FF3E606F" FontSize="14" FontFamily="Segoe UI Semibold" Click="hideTheEnd_Click"/>
+            </Canvas>
+        </Canvas>
+        <Canvas x:Name="statsPanel" Height="123" Canvas.Left="338" Canvas.Top="34" Width="231" Background="#FF3E606F" Visibility="Hidden">
+            <TextBlock Canvas.Left="10" TextWrapping="Wrap" Canvas.Top="13" Height="103" Width="107" Foreground="#FFACC2C4"><Run Language="hu-hu" Text="Played games:"/><LineBreak/><Run Language="hu-hu" Text="Steps: "/><LineBreak/><Run Language="hu-hu" Text="Canidates showed: "/><LineBreak/><Run Language="hu-hu" Text="All time: "/><LineBreak/><Run Language="hu-hu" Text="Points: "/><LineBreak/><Run Language="hu-hu" Text="Solver used: "/></TextBlock>
+            <TextBlock x:Name="lblStatValues" Canvas.Left="122" TextWrapping="Wrap" Canvas.Top="13" Height="103" Width="99" Foreground="#FFACC2C4"><Run Language="hu-hu" Text="10"/><LineBreak/><Run Language="hu-hu" Text="10"/><LineBreak/><Run Language="hu-hu" Text="15 times"/><LineBreak/><Run Language="hu-hu" Text="00 : 00 : 00"/><LineBreak/><Run Language="hu-hu" Text="6261"/><LineBreak/><Run Language="hu-hu" Text="6 times"/></TextBlock>
+        </Canvas>
+    </Canvas>
+</Window>
